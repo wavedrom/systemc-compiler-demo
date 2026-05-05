@@ -144,7 +144,7 @@ The `make_examples.sh` script provides comprehensive verification:
 
 ### Lint Report Format
 
-The consolidated report (`example_tests/build_all_examples/verilator_lint_report.txt`) contains:
+The consolidated report (`verilator_lint_report.txt` in project root) contains:
 
 - **Summary Section**: Warnings grouped by type with occurrence counts
 - **Breakdown Section**: Files affected by each warning type with examples

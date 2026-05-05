@@ -70,6 +70,15 @@ These documents provide evidence that Phase 1 is complete and working.
 
 **Purpose:** Documents troubleshooting process and solutions.
 
+### [CLEANUP_AND_ORGANIZATION.md](CLEANUP_AND_ORGANIZATION.md) - **Project Reorganization** 🧹
+- Documentation moved to docs/ folder
+- Cleanup of temporary logs and build folders
+- Updates to poc.md and README.md
+- .gitignore updates
+- Final project structure
+
+**Purpose:** Documents workspace organization and cleanup process.
+
 ---
 
 ## Quick Reference
@@ -83,6 +92,7 @@ These documents provide evidence that Phase 1 is complete and working.
 | **VERILATOR_REPORT_FORMAT.md** | Report structure | Analyzing lint results |
 | **CONSOLIDATION_SUMMARY.md** | Script evolution | Understanding automation |
 | **DEBUG_COMPLETE_SUMMARY.md** | Troubleshooting | Debugging issues |
+| **CLEANUP_AND_ORGANIZATION.md** | Workspace organization | Understanding project structure |
 
 ---
 
@@ -93,7 +103,7 @@ The verification process creates these artifacts (not in version control):
 - `example_tests/build_all_examples/` - Built examples
 - `example_tests/build_all_examples/*/sv_out/*.sv` - Generated Verilog
 - `example_tests/build_all_examples/*/sv_out/*.lint.log` - Individual lint logs
-- `example_tests/build_all_examples/verilator_lint_report.txt` - **Consolidated lint report**
+- `verilator_lint_report.txt` - **Consolidated lint report** (in project root)
 
 ---
 

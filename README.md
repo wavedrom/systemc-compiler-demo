@@ -56,7 +56,7 @@ This will:
 - Run SCTool to generate SystemVerilog RTL
 - Lint all generated Verilog with Verilator
 - Produce ~20 `.sv` files in `example_tests/build_all_examples/*/sv_out/`
-- Generate consolidated lint report: `example_tests/build_all_examples/verilator_lint_report.txt`
+- Generate consolidated lint report: `verilator_lint_report.txt` (in project root)
 - Verify that SystemC-to-Verilog translation works correctly
 
 **Lint Results:**

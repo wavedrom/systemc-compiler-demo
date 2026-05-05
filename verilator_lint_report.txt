@@ -1,0 +1,954 @@
+================================================================================
+Verilator Lint Report
+Generated: Mon May  4 06:38:12 PM PDT 2026
+================================================================================
+
+
+================================================================================
+SUMMARY: Warnings Grouped by Type
+================================================================================
+
+    110 %Warning-WIDTHEXPAND
+     35 %Warning-WIDTHTRUNC
+     22 %Warning-LATCH
+      1 %Warning-SYMRSVDWORD
+
+Details by Warning Type:
+
+--------------------------------------------------------------------------------
+LATCH
+--------------------------------------------------------------------------------
+  • portmap/sv_out/sct_portmap.sv (4 occurrence(s))
+  • sct_always_ready/sv_out/sct_always_ready_meth.sv (3 occurrence(s))
+  • sct_fifo/sv_out/sct_fifo_shared.sv (4 occurrence(s))
+  • sct_fifo/sv_out/sct_target_fifo.sv (6 occurrence(s))
+  • sct_target/sv_out/sct_target_method.sv (5 occurrence(s))
+
+  Example:
+  %Warning-LATCH: example_tests/build_all_examples/portmap/sv_out/sct_portmap.sv:143:1: Latch inferred for signal 'Dut.methProc.A' (not all control paths of combinational always assign a value)
+                                                                                      : ... Suggest use of always_latch for intentional latches
+    143 | always_comb 
+        | ^~~~~~~~~~~
+
+--------------------------------------------------------------------------------
+SYMRSVDWORD
+--------------------------------------------------------------------------------
+  • dma/sv_out/DmaEngine_NoSs.sv (1 occurrence(s))
+
+  Example:
+  %Warning-SYMRSVDWORD: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:16:18: Symbol matches C++ common word: 'interrupt'
+     16 |     output logic interrupt,
+        |                  ^~~~~~~~~
+                        ... For warning description see https://verilator.org/warn/SYMRSVDWORD?v=5.045
+
+--------------------------------------------------------------------------------
+WIDTHEXPAND
+--------------------------------------------------------------------------------
+  • sct_initiator/sv_out/sct_initiator_thread.sv (7 occurrence(s))
+  • portmap/sv_out/sct_portmap.sv (1 occurrence(s))
+  • counter/sv_out/counter.sv (1 occurrence(s))
+  • dma/sv_out/DmaEngine_NoSs.sv (12 occurrence(s))
+  • sct_always_ready/sv_out/sct_always_ready_thread.sv (4 occurrence(s))
+  • sct_always_ready/sv_out/sct_always_ready_meth.sv (4 occurrence(s))
+  • asserts/sv_out/imm_assert.sv (2 occurrence(s))
+  • decoder/sv_out/decoder.sv (8 occurrence(s))
+  • sct_fifo/sv_out/sct_fifo_single.sv (3 occurrence(s))
+  • sct_fifo/sv_out/sct_fifo_shared.sv (4 occurrence(s))
+  • sct_fifo/sv_out/sct_target_fifo.sv (10 occurrence(s))
+  • sct_target/sv_out/sct_target_method.sv (12 occurrence(s))
+  • dm_paranut/sv_out/dm_paranut.sv (36 occurrence(s))
+  • sct_signal/sv_out/sct_signal.sv (1 occurrence(s))
+  • sct_signal/sv_out/sct_in_out_ports.sv (5 occurrence(s))
+
+  Example:
+  %Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_initiator/sv_out/sct_initiator_thread.sv:207:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2a' generates 6 bits.
+                                                                                                            : ... note: In instance 'simple_test'
+    207 |             data = 6'd42;
+        |                  ^
+
+--------------------------------------------------------------------------------
+WIDTHTRUNC
+--------------------------------------------------------------------------------
+  • dma/sv_out/DmaEngine_NoSs.sv (7 occurrence(s))
+  • sct_always_ready/sv_out/sct_always_ready_thread.sv (5 occurrence(s))
+  • sct_always_ready/sv_out/sct_always_ready_meth.sv (5 occurrence(s))
+  • asserts/sv_out/imm_assert.sv (2 occurrence(s))
+  • sct_fifo/sv_out/sct_fifo_single.sv (3 occurrence(s))
+  • sct_fifo/sv_out/sct_target_fifo.sv (3 occurrence(s))
+  • dm_paranut/sv_out/dm_paranut.sv (4 occurrence(s))
+  • sct_signal/sv_out/sct_signal.sv (2 occurrence(s))
+  • sct_signal/sv_out/sct_in_out_ports.sv (4 occurrence(s))
+
+  Example:
+  %Warning-WIDTHTRUNC: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:106:35: Operator ASSIGN expects 20 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_cfg_req_data' generates 32 bits.
+                                                                                           : ... note: In instance 'GenDma'
+    106 |                 cfg_src_addr_next = cfg_cfg_req_data;
+        |                                   ^
+
+
+================================================================================
+DETAILED RESULTS BY FILE
+================================================================================
+
+
+================================================================================
+File: asserts/sv_out/imm_assert.sv
+================================================================================
+Status: WARNINGS (4 warning(s))
+
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/asserts/sv_out/imm_assert.sv:62:20: Operator ASSIGN expects 4 bits on the Assign RHS, but Assign RHS's VARREF 'm_next' generates 8 bits.
+                                                                                        : ... note: In instance 'ImmAssert'
+   62 |             b_next = m_next;
+      |                    ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.045
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/asserts/sv_out/imm_assert.sv:64:32: Operator NEQ expects 8 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                         : ... note: In instance 'ImmAssert'
+   64 |                 assert (m_next != 1'd0) else $error("Assertion failed at imm_assert.cpp:55:13");
+      |                                ^~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/asserts/sv_out/imm_assert.sv:75:20: Operator ASSIGN expects 4 bits on the Assign RHS, but Assign RHS's VARREF 'm_next' generates 8 bits.
+                                                                                        : ... note: In instance 'ImmAssert'
+   75 |             b_next = m_next;
+      |                    ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/asserts/sv_out/imm_assert.sv:77:32: Operator NEQ expects 8 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                         : ... note: In instance 'ImmAssert'
+   77 |                 assert (m_next != 1'd0) else $error("Assertion failed at imm_assert.cpp:55:13");
+      |                                ^~
+%Error: Exiting due to 4 warning(s)
+
+================================================================================
+File: asserts/sv_out/temp_assert.sv
+================================================================================
+Status: CLEAN
+
+================================================================================
+File: counter/sv_out/counter.sv
+================================================================================
+Status: WARNINGS (1 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/counter/sv_out/counter.sv:50:22: Operator MODDIV expects 4 bits on the RHS, but RHS's CONST '2'h2' generates 2 bits.
+                                                                                      : ... note: In instance 'Dut'
+   50 |     even = |(counter % 2'd2);
+      |                      ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Error: Exiting due to 1 warning(s)
+
+================================================================================
+File: decoder/sv_out/decoder.sv
+================================================================================
+Status: WARNINGS (8 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/decoder/sv_out/decoder.sv:35:25: Operator ASSIGN expects 2 bits on the Assign RHS, but Assign RHS's CONST '1'h1' generates 1 bits.
+                                                                                      : ... note: In instance 'Dut'
+   35 |             binary_dout = 1'd1;
+      |                         ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/decoder/sv_out/decoder.sv:33:21: Operator EQ expects 4 bits on the RHS, but RHS's CONST '2'h2' generates 2 bits.
+                                                                                      : ... note: In instance 'Dut'
+   33 |         if (data_in == 2'h2)
+      |                     ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/decoder/sv_out/decoder.sv:37:21: Operator EQ expects 4 bits on the RHS, but RHS's CONST '3'h4' generates 3 bits.
+                                                                                      : ... note: In instance 'Dut'
+   37 |         if (data_in == 3'h4)
+      |                     ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/decoder/sv_out/decoder.sv:58:30: Operator ASSIGN expects 2 bits on the Assign RHS, but Assign RHS's CONST '1'h1' generates 1 bits.
+                                                                                      : ... note: In instance 'Dut'
+   58 |             binary_case_dout = 1'd1;
+      |                              ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/decoder/sv_out/decoder.sv:84:35: Operator ASSIGN expects 2 bits on the Assign RHS, but Assign RHS's CONST '1'h1' generates 1 bits.
+                                                                                      : ... note: In instance 'Dut'
+   84 |                 binary_prior_dout = 1'd1;
+      |                                   ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/decoder/sv_out/decoder.sv:118:38: Operator ASSIGN expects 4 bits on the Assign RHS, but Assign RHS's CONST '1'h1' generates 1 bits.
+                                                                                       : ... note: In instance 'Dut'
+  118 |             binary_decoder_case_dout = 1'd1;
+      |                                      ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/decoder/sv_out/decoder.sv:121:38: Operator ASSIGN expects 4 bits on the Assign RHS, but Assign RHS's CONST '2'h2' generates 2 bits.
+                                                                                       : ... note: In instance 'Dut'
+  121 |             binary_decoder_case_dout = 2'h2;
+      |                                      ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/decoder/sv_out/decoder.sv:124:38: Operator ASSIGN expects 4 bits on the Assign RHS, but Assign RHS's CONST '3'h4' generates 3 bits.
+                                                                                       : ... note: In instance 'Dut'
+  124 |             binary_decoder_case_dout = 3'h4;
+      |                                      ^
+%Error: Exiting due to 8 warning(s)
+
+================================================================================
+File: dma/sv_out/DmaEngine_NoSs.sv
+================================================================================
+Status: WARNINGS (20 warning(s))
+
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:106:35: Operator ASSIGN expects 20 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_cfg_req_data' generates 32 bits.
+                                                                                         : ... note: In instance 'GenDma'
+  106 |                 cfg_src_addr_next = cfg_cfg_req_data;
+      |                                   ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.045
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:108:39: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_src_addr' generates 20 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  108 |                 cfg_cfg_rsp_data_next = cfg_src_addr;
+      |                                       ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:114:35: Operator ASSIGN expects 20 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_cfg_req_data' generates 32 bits.
+                                                                                         : ... note: In instance 'GenDma'
+  114 |                 cfg_dst_addr_next = cfg_cfg_req_data;
+      |                                   ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:116:39: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_dst_addr' generates 20 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  116 |                 cfg_cfg_rsp_data_next = cfg_dst_addr;
+      |                                       ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:122:40: Operator ASSIGN expects 20 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_cfg_req_data' generates 32 bits.
+                                                                                         : ... note: In instance 'GenDma'
+  122 |                 cfg_transfer_size_next = cfg_cfg_req_data;
+      |                                        ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:124:39: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_transfer_size' generates 20 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  124 |                 cfg_cfg_rsp_data_next = cfg_transfer_size;
+      |                                       ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:130:37: Operator ASSIGN expects 20 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_cfg_req_data' generates 32 bits.
+                                                                                         : ... note: In instance 'GenDma'
+  130 |                 cfg_src_stride_next = cfg_cfg_req_data;
+      |                                     ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:132:39: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_src_stride' generates 20 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  132 |                 cfg_cfg_rsp_data_next = cfg_src_stride;
+      |                                       ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:138:37: Operator ASSIGN expects 20 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_cfg_req_data' generates 32 bits.
+                                                                                         : ... note: In instance 'GenDma'
+  138 |                 cfg_dst_stride_next = cfg_cfg_req_data;
+      |                                     ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:140:39: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_dst_stride' generates 20 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  140 |                 cfg_cfg_rsp_data_next = cfg_dst_stride;
+      |                                       ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:154:39: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_interrupt_status' generates 1 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  154 |                 cfg_cfg_rsp_data_next = cfg_interrupt_status;
+      |                                       ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:162:39: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_interrupt_mask' generates 1 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  162 |                 cfg_cfg_rsp_data_next = cfg_interrupt_mask;
+      |                                       ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:170:39: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'cfg_interrupt_clear' generates 1 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  170 |                 cfg_cfg_rsp_data_next = cfg_interrupt_clear;
+      |                                       ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:255:33: Operator GT expects 20 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  255 |                 if (toMove_next > 1'd0)
+      |                                 ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:274:24: Operator GT expects 20 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  274 |             if (i_next > 1'd0)
+      |                        ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:295:50: Bit extraction of array[15:0] requires 4 bit index, not 20 bits.
+                                                                                         : ... note: In instance 'GenDma'
+  295 |                 mem_req_data_next = dataBuff_next[i_next0];
+      |                                                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:300:29: Operator GT expects 20 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  300 |             if (toMove_next > 1'd0)
+      |                             ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:322:50: Bit extraction of array[15:0] requires 4 bit index, not 20 bits.
+                                                                                         : ... note: In instance 'GenDma'
+  322 |                 mem_req_data_next = dataBuff_next[i_next0];
+      |                                                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:327:29: Operator GT expects 20 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                          : ... note: In instance 'GenDma'
+  327 |             if (toMove_next > 1'd0)
+      |                             ^
+%Warning-SYMRSVDWORD: example_tests/build_all_examples/dma/sv_out/DmaEngine_NoSs.sv:16:18: Symbol matches C++ common word: 'interrupt'
+   16 |     output logic interrupt,
+      |                  ^~~~~~~~~
+                      ... For warning description see https://verilator.org/warn/SYMRSVDWORD?v=5.045
+                      ... Use "/* verilator lint_off SYMRSVDWORD */" and lint_on around source to disable this message.
+%Error: Exiting due to 20 warning(s)
+
+================================================================================
+File: dm_paranut/sv_out/dm_paranut.sv
+================================================================================
+Status: WARNINGS (40 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:86:30: Operator ADD expects 21 bits on the LHS, but LHS's CONST '10'h200' generates 10 bits.
+                                                                                            : ... note: In instance 'MDebugModule'
+   86 |     progbuf_jump = -(10'h200 + ((1'd1 <<< 1'd1) - 1'd1) * 3'd4 - 1'd1 * 3'd4);
+      |                              ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:86:39: Operator SHIFTL expects 21 bits on the LHS, but LHS's CONST '1'h1' generates 1 bits.
+                                                                                            : ... note: In instance 'MDebugModule'
+   86 |     progbuf_jump = -(10'h200 + ((1'd1 <<< 1'd1) - 1'd1) * 3'd4 - 1'd1 * 3'd4);
+      |                                       ^~~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:95:13: Operator ASSIGN expects 5 bits on the Assign RHS, but Assign RHS's VARREF 'dmcontrol_hartsel' generates 2 bits.
+                                                                                            : ... note: In instance 'MDebugModule'
+   95 |     hartsel = dmcontrol_hartsel;
+      |             ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:98:14: Operator ASSIGN expects 7 bits on the Assign RHS, but Assign RHS's SEL generates 3 bits.
+                                                                                            : ... note: In instance 'MDebugModule'
+   98 |     cmd_size = cmd_var[22 : 20];
+      |              ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:105:15: Operator EQ expects 32 bits on the RHS, but RHS's VARREF 'hartsel' generates 5 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  105 |         if (i == hartsel)
+      |               ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:127:34: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's CONST '1'h1' generates 1 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  127 |                 abstracts_cmderr = 1'd1;
+      |                                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:129:31: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's CONST '1'h1' generates 1 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  129 |                 dm_state_next = 1'd1;
+      |                               ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:123:53: Operator EQ expects 3 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  123 |         if (command_written && reg_abstracts_cmderr == 1'd0)
+      |                                                     ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:142:31: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's CONST '2'h2' generates 2 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  142 |                 dm_state_next = 2'd2;
+      |                               ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:137:28: Bit extraction of var[3:0] requires 2 bit index, not 5 bits.
+                                                                                            : ... note: In instance 'MDebugModule'
+  137 |             if (haltsum_var[hartsel] == 1'd0)
+      |                            ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.045
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:145:30: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's CONST '2'h2' generates 2 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  145 |             abstracts_cmderr = 2'd2;
+      |                              ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:135:22: Operator EQ expects 8 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  135 |         if (cmd_type == 1'd0 && cmd_size == 2'd2 && cmd_regno >= 13'h1000 && cmd_regno <= 13'h101F)
+      |                      ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:135:42: Operator EQ expects 7 bits on the RHS, but RHS's CONST '2'h2' generates 2 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  135 |         if (cmd_type == 1'd0 && cmd_size == 2'd2 && cmd_regno >= 13'h1000 && cmd_regno <= 13'h101F)
+      |                                          ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:135:63: Operator GTE expects 16 bits on the RHS, but RHS's CONST '13'h1000' generates 13 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  135 |         if (cmd_type == 1'd0 && cmd_size == 2'd2 && cmd_regno >= 13'h1000 && cmd_regno <= 13'h101F)
+      |                                                               ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:135:88: Operator LTE expects 16 bits on the RHS, but RHS's CONST '13'h101f' generates 13 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  135 |         if (cmd_type == 1'd0 && cmd_size == 2'd2 && cmd_regno >= 13'h1000 && cmd_regno <= 13'h101F)
+      |                                                                                        ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:162:20: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's CONST '5'h13' generates 5 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  162 |             reg_in = 5'h13;
+      |                    ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:164:23: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's CONST '2'h3' generates 2 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  164 |         dm_state_next = 2'd3;
+      |                       ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:278:17: Operator ASSIGN expects 20 bits on the Assign RHS, but Assign RHS's VARREF 'hartsel' generates 2 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  278 |     hartsel_out = hartsel;
+      |                 ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:279:16: Operator ASSIGN expects 2 bits on the Assign RHS, but Assign RHS's VARREF 'wb_dat_i' generates 32 bits.
+                                                                                            : ... note: In instance 'MDebugModule'
+  279 |     wb_hartsel = wb_dat_i;
+      |                ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:299:43: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's CONST '1'h1' generates 1 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  299 |                 reg_abstracts_cmderr_next = 1'd1;
+      |                                           ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:300:31: Operator NEGATE expects 32 bits on the LHS, but LHS's CONST '2'sh1' generates 2 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  300 |                 dmi_dat_out = -2'sd1;
+      |                               ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:325:25: Operator ASSIGN expects 32 bits on the Assign RHS, but Assign RHS's VARREF 'haltsum' generates 4 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  325 |             dmi_dat_out = haltsum;
+      |                         ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:295:9: Operator CASE expects 32 or 7 bits on the Case expression, but Case expression's VARREF 'dmi_adr' generates 6 bits.
+                                                                                            : ... note: In instance 'MDebugModule'
+  295 |         case (dmi_adr)
+      |         ^~~~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:339:47: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's CONST '1'h1' generates 1 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  339 |                     reg_abstracts_cmderr_next = 1'd1;
+      |                                               ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:361:70: Operator AND expects 8 bits on the LHS, but LHS's VARREF 'reg_abstracts_cmderr_var' generates 3 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  361 |                 reg_abstracts_cmderr_next = reg_abstracts_cmderr_var & ~8'(dmi_dat_in[10 : 8]);
+      |                                                                      ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:361:43: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's AND generates 8 bits.
+                                                                                            : ... note: In instance 'MDebugModule'
+  361 |                 reg_abstracts_cmderr_next = reg_abstracts_cmderr_var & ~8'(dmi_dat_in[10 : 8]);
+      |                                           ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:387:46: Operator EQ expects 32 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  387 |                 TMP_0 = (adr & 32'hFFFF0000) == 1'd0;
+      |                                              ^~
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:398:40: Bit extraction of var[3:0] requires 2 bit index, not 4 bits.
+                                                                                            : ... note: In instance 'MDebugModule'
+  398 |                             haltsum_var[wb_dat_i[3 : 0]] = 1'd1;
+      |                                        ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:416:55: Operator ASSIGN expects 3 bits on the Assign RHS, but Assign RHS's CONST '2'h3' generates 2 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  416 |                             reg_abstracts_cmderr_next = 2'd3;
+      |                                                       ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:437:66: Operator ADD expects 7 bits on the RHS, but RHS's CONST '2'h3' generates 2 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  437 |                                         if (wb_offset < 7'((1'd1 + 2'd3 + (1'd1 <<< 1'd1)) * 3'd4))
+      |                                                                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:437:81: Operator SHIFTL expects 7 bits on the LHS, but LHS's CONST '1'h1' generates 1 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  437 |                                         if (wb_offset < 7'((1'd1 + 2'd3 + (1'd1 <<< 1'd1)) * 3'd4))
+      |                                                                                 ^~~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:437:55: Operator LT expects 11 bits on the RHS, but RHS's MUL generates 7 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  437 |                                         if (wb_offset < 7'((1'd1 + 2'd3 + (1'd1 <<< 1'd1)) * 3'd4))
+      |                                                       ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:430:47: Operator GTE expects 11 bits on the RHS, but RHS's CONST '10'h200' generates 10 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  430 |                                 if (wb_offset >= 10'h200 && wb_offset <= 11'(10'h200 + (1'd1 <<< 1'd1) * 3'd4))
+      |                                               ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:430:94: Operator SHIFTL expects 11 bits on the LHS, but LHS's CONST '1'h1' generates 1 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  430 |                                 if (wb_offset >= 10'h200 && wb_offset <= 11'(10'h200 + (1'd1 <<< 1'd1) * 3'd4))
+      |                                                                                              ^~~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:426:43: Operator GTE expects 11 bits on the RHS, but RHS's CONST '9'h100' generates 9 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  426 |                             if (wb_offset >= 9'h100 && wb_offset <= 10'(10'sh100 + (1 <<< 2)))
+      |                                           ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:426:66: Operator LTE expects 11 bits on the RHS, but RHS's SEL generates 10 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  426 |                             if (wb_offset >= 9'h100 && wb_offset <= 10'(10'sh100 + (1 <<< 2)))
+      |                                                                  ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:422:63: Operator LTE expects 12 bits on the LHS, but LHS's VARREF 'wb_offset' generates 11 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  422 |                         if (wb_offset >= 11'h400 && wb_offset <= 12'(12'sh400 + 8'sh54))
+      |                                                               ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:383:54: Operator EQ expects 3 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  383 |             if (stb_i == 1 && cyc_i == 1 && dm_state == 1'd0)
+      |                                                      ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:472:26: Operator SUB expects 32 bits on the LHS, but LHS's CONST '3'sh3' generates 3 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  472 |     for (int i_2 = 3'sd3 - 2'sd1; i_2 > 0; i_2--)
+      |                          ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/dm_paranut/sv_out/dm_paranut.sv:472:26: Operator SUB expects 32 bits on the RHS, but RHS's CONST '2'sh1' generates 2 bits.
+                                                                                             : ... note: In instance 'MDebugModule'
+  472 |     for (int i_2 = 3'sd3 - 2'sd1; i_2 > 0; i_2--)
+      |                          ^
+%Error: Exiting due to 40 warning(s)
+
+================================================================================
+File: fsm/sv_out/fsm.sv
+================================================================================
+Status: CLEAN
+
+================================================================================
+File: intrinsic/sv_out/intrinsic.sv
+================================================================================
+Status: CLEAN
+
+================================================================================
+File: latch_ff/sv_out/latch_ff.sv
+================================================================================
+Status: CLEAN
+
+================================================================================
+File: portmap/sv_out/sct_portmap.sv
+================================================================================
+Status: WARNINGS (5 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/portmap/sv_out/sct_portmap.sv:160:11: Operator ASSIGN expects 65 bits on the Assign RHS, but Assign RHS's CONST '1'h1' generates 1 bits.
+                                                                                           : ... note: In instance 'Dut'
+  160 |     vo[1] = 1'd1;
+      |           ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-LATCH: example_tests/build_all_examples/portmap/sv_out/sct_portmap.sv:143:1: Latch inferred for signal 'Dut.methProc.A' (not all control paths of combinational always assign a value)
+                                                                                    : ... Suggest use of always_latch for intentional latches
+  143 | always_comb 
+      | ^~~~~~~~~~~
+                ... For warning description see https://verilator.org/warn/LATCH?v=5.045
+                ... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.
+%Warning-LATCH: example_tests/build_all_examples/portmap/sv_out/sct_portmap.sv:143:1: Latch inferred for signal 'Dut.methProc.TMP_2' (not all control paths of combinational always assign a value)
+                                                                                    : ... Suggest use of always_latch for intentional latches
+  143 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/portmap/sv_out/sct_portmap.sv:143:1: Latch inferred for signal 'Dut.methProc.TMP_3' (not all control paths of combinational always assign a value)
+                                                                                    : ... Suggest use of always_latch for intentional latches
+  143 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/portmap/sv_out/sct_portmap.sv:143:1: Latch inferred for signal 'Dut.methProc.TMP_5' (not all control paths of combinational always assign a value)
+                                                                                    : ... Suggest use of always_latch for intentional latches
+  143 | always_comb 
+      | ^~~~~~~~~~~
+%Error: Exiting due to 5 warning(s)
+
+================================================================================
+File: portmap/sv_out/sct_portmap_wrapper.sv
+================================================================================
+Status: CLEAN
+
+================================================================================
+File: sct_always_ready/sv_out/sct_always_ready_meth.sv
+================================================================================
+Status: WARNINGS (12 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:552:35: Operator NEQ expects 2 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                                              : ... note: In instance 'simple_test.a'
+  552 |     notEmpty = fifo_element_num_d != 1'd0;
+      |                                   ^~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:602:45: Operator EQ expects 3 bits on the LHS, but LHS's VARREF 'fifo_pop_indx' generates 1 bits.
+                                                                                                              : ... note: In instance 'simple_test.a'
+  602 |         fifo_pop_indx_next = (fifo_pop_indx == 3'(2'd2 - 1'd1)) ? 1'd0 : fifo_pop_indx + 1'd1;
+      |                                             ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:607:47: Operator EQ expects 3 bits on the LHS, but LHS's VARREF 'fifo_push_indx' generates 1 bits.
+                                                                                                              : ... note: In instance 'simple_test.a'
+  607 |         fifo_push_indx_next = (fifo_push_indx == 3'(2'd2 - 1'd1)) ? 1'd0 : fifo_push_indx + 1'd1;
+      |                                               ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:175:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2a' generates 6 bits.
+                                                                                                              : ... note: In instance 'simple_test'
+  175 |             data = 6'd42;
+      |                  ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:197:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next' generates 32 bits.
+                                                                                                             : ... note: In instance 'simple_test'
+  197 |             data = i_next;
+      |                  ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.045
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:224:22: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next' generates 32 bits.
+                                                                                                             : ... note: In instance 'simple_test'
+  224 |                 data = i_next;
+      |                      ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:268:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next0' generates 32 bits.
+                                                                                                             : ... note: In instance 'simple_test'
+  268 |             data = i_next0;
+      |                  ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:313:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next0' generates 32 bits.
+                                                                                                             : ... note: In instance 'simple_test'
+  313 |             data = i_next0;
+      |                  ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:340:22: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next0' generates 32 bits.
+                                                                                                             : ... note: In instance 'simple_test'
+  340 |                 data = i_next0;
+      |                      ^
+%Warning-LATCH: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:671:1: Latch inferred for signal 'simple_test.a.methProc.A' (not all control paths of combinational always assign a value)
+                                                                                                       : ... Suggest use of always_latch for intentional latches
+  671 | always_comb 
+      | ^~~~~~~~~~~
+                ... For warning description see https://verilator.org/warn/LATCH?v=5.045
+                ... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.
+%Warning-LATCH: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:671:1: Latch inferred for signal 'simple_test.a.methProc.TMP_1' (not all control paths of combinational always assign a value)
+                                                                                                       : ... Suggest use of always_latch for intentional latches
+  671 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_meth.sv:671:1: Latch inferred for signal 'simple_test.a.methProc.TMP_2' (not all control paths of combinational always assign a value)
+                                                                                                       : ... Suggest use of always_latch for intentional latches
+  671 | always_comb 
+      | ^~~~~~~~~~~
+%Error: Exiting due to 12 warning(s)
+
+================================================================================
+File: sct_always_ready/sv_out/sct_always_ready_thread.sv
+================================================================================
+Status: WARNINGS (9 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_thread.sv:533:35: Operator NEQ expects 2 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                                                : ... note: In instance 'simple_test.a'
+  533 |     notEmpty = fifo_element_num_d != 1'd0;
+      |                                   ^~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_thread.sv:578:45: Operator EQ expects 3 bits on the LHS, but LHS's VARREF 'fifo_pop_indx' generates 1 bits.
+                                                                                                                : ... note: In instance 'simple_test.a'
+  578 |         fifo_pop_indx_next = (fifo_pop_indx == 3'(2'd2 - 1'd1)) ? 1'd0 : fifo_pop_indx + 1'd1;
+      |                                             ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_thread.sv:583:47: Operator EQ expects 3 bits on the LHS, but LHS's VARREF 'fifo_push_indx' generates 1 bits.
+                                                                                                                : ... note: In instance 'simple_test.a'
+  583 |         fifo_push_indx_next = (fifo_push_indx == 3'(2'd2 - 1'd1)) ? 1'd0 : fifo_push_indx + 1'd1;
+      |                                               ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_thread.sv:146:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2a' generates 6 bits.
+                                                                                                                : ... note: In instance 'simple_test'
+  146 |             data = 6'd42;
+      |                  ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_thread.sv:175:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next' generates 32 bits.
+                                                                                                               : ... note: In instance 'simple_test'
+  175 |             data = i_next;
+      |                  ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.045
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_thread.sv:202:22: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next' generates 32 bits.
+                                                                                                               : ... note: In instance 'simple_test'
+  202 |                 data = i_next;
+      |                      ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_thread.sv:246:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next0' generates 32 bits.
+                                                                                                               : ... note: In instance 'simple_test'
+  246 |             data = i_next0;
+      |                  ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_thread.sv:291:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next0' generates 32 bits.
+                                                                                                               : ... note: In instance 'simple_test'
+  291 |             data = i_next0;
+      |                  ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_always_ready/sv_out/sct_always_ready_thread.sv:318:22: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next0' generates 32 bits.
+                                                                                                               : ... note: In instance 'simple_test'
+  318 |                 data = i_next0;
+      |                      ^
+%Error: Exiting due to 9 warning(s)
+
+================================================================================
+File: sct_fifo/sv_out/sct_fifo_shared.sv
+================================================================================
+Status: WARNINGS (8 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_shared.sv:183:35: Operator NEQ expects 2 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                                : ... note: In instance 'simple_test.a'
+  183 |     notEmpty = fifo_element_num_d != 1'd0;
+      |                                   ^~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_shared.sv:228:45: Operator EQ expects 3 bits on the LHS, but LHS's VARREF 'fifo_pop_indx' generates 1 bits.
+                                                                                                : ... note: In instance 'simple_test.a'
+  228 |         fifo_pop_indx_next = (fifo_pop_indx == 3'(2'd2 - 1'd1)) ? 1'd0 : fifo_pop_indx + 1'd1;
+      |                                             ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_shared.sv:233:47: Operator EQ expects 3 bits on the LHS, but LHS's VARREF 'fifo_push_indx' generates 1 bits.
+                                                                                                : ... note: In instance 'simple_test.a'
+  233 |         fifo_push_indx_next = (fifo_push_indx == 3'(2'd2 - 1'd1)) ? 1'd0 : fifo_push_indx + 1'd1;
+      |                                               ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_shared.sv:49:27: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2a' generates 6 bits.
+                                                                                               : ... note: In instance 'simple_test'
+   49 |             run_data_next = 6'd42;
+      |                           ^
+%Warning-LATCH: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_shared.sv:258:1: Latch inferred for signal 'simple_test.a.putMeth.data' (not all control paths of combinational always assign a value)
+                                                                                         : ... Suggest use of always_latch for intentional latches
+  258 | always_comb 
+      | ^~~~~~~~~~~
+                ... For warning description see https://verilator.org/warn/LATCH?v=5.045
+                ... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.
+%Warning-LATCH: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_shared.sv:258:1: Latch inferred for signal 'simple_test.a.putMeth.TMP_2' (not all control paths of combinational always assign a value)
+                                                                                         : ... Suggest use of always_latch for intentional latches
+  258 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_shared.sv:289:1: Latch inferred for signal 'simple_test.a.getMeth.TMP_1' (not all control paths of combinational always assign a value)
+                                                                                         : ... Suggest use of always_latch for intentional latches
+  289 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_shared.sv:289:1: Latch inferred for signal 'simple_test.a.getMeth.data' (not all control paths of combinational always assign a value)
+                                                                                         : ... Suggest use of always_latch for intentional latches
+  289 | always_comb 
+      | ^~~~~~~~~~~
+%Error: Exiting due to 8 warning(s)
+
+================================================================================
+File: sct_fifo/sv_out/sct_fifo_single.sv
+================================================================================
+Status: WARNINGS (6 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_single.sv:210:35: Operator NEQ expects 2 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                                : ... note: In instance 'simple_test.a'
+  210 |     notEmpty = fifo_element_num_d != 1'd0;
+      |                                   ^~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_single.sv:255:45: Operator EQ expects 3 bits on the LHS, but LHS's VARREF 'fifo_pop_indx' generates 1 bits.
+                                                                                                : ... note: In instance 'simple_test.a'
+  255 |         fifo_pop_indx_next = (fifo_pop_indx == 3'(2'd2 - 1'd1)) ? 1'd0 : fifo_pop_indx + 1'd1;
+      |                                             ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_single.sv:260:47: Operator EQ expects 3 bits on the LHS, but LHS's VARREF 'fifo_push_indx' generates 1 bits.
+                                                                                                : ... note: In instance 'simple_test.a'
+  260 |         fifo_push_indx_next = (fifo_push_indx == 3'(2'd2 - 1'd1)) ? 1'd0 : fifo_push_indx + 1'd1;
+      |                                               ^~
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_single.sv:61:27: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's ADD generates 32 bits.
+                                                                                              : ... note: In instance 'simple_test'
+   61 |             run_data_next = 32'(7'sd32 + i_next);
+      |                           ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.045
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_single.sv:70:27: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's ADD generates 32 bits.
+                                                                                              : ... note: In instance 'simple_test'
+   70 |             run_data_next = 32'(7'sd32 + i_next);
+      |                           ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_fifo/sv_out/sct_fifo_single.sv:82:31: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's ADD generates 32 bits.
+                                                                                              : ... note: In instance 'simple_test'
+   82 |                 run_data_next = 32'(7'sd32 + i_next);
+      |                               ^
+%Error: Exiting due to 6 warning(s)
+
+================================================================================
+File: sct_fifo/sv_out/sct_target_fifo.sv
+================================================================================
+Status: WARNINGS (19 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:695:39: Operator NEQ expects 2 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                                : ... note: In instance 'simple_test.a'
+  695 |     notEmpty = run_fifo_element_num_d != 1'd0;
+      |                                       ^~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:740:53: Operator EQ expects 3 bits on the LHS, but LHS's VARREF 'run_fifo_pop_indx' generates 1 bits.
+                                                                                                : ... note: In instance 'simple_test.a'
+  740 |         run_fifo_pop_indx_next = (run_fifo_pop_indx == 3'(2'd2 - 1'd1)) ? 1'd0 : run_fifo_pop_indx + 1'd1;
+      |                                                     ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:745:55: Operator EQ expects 3 bits on the LHS, but LHS's VARREF 'run_fifo_push_indx' generates 1 bits.
+                                                                                                : ... note: In instance 'simple_test.a'
+  745 |         run_fifo_push_indx_next = (run_fifo_push_indx == 3'(2'd2 - 1'd1)) ? 1'd0 : run_fifo_push_indx + 1'd1;
+      |                                                       ^~
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:215:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's ADD generates 32 bits.
+                                                                                               : ... note: In instance 'simple_test'
+  215 |             data = 32'(7'sd42 + i_next);
+      |                  ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.045
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:233:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's ADD generates 32 bits.
+                                                                                               : ... note: In instance 'simple_test'
+  233 |             data = 32'(7'sd42 + i_next);
+      |                  ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:254:22: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's ADD generates 32 bits.
+                                                                                               : ... note: In instance 'simple_test'
+  254 |                 data = 32'(7'sd42 + i_next);
+      |                      ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:328:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2a' generates 6 bits.
+                                                                                                : ... note: In instance 'simple_test'
+  328 |             data = 6'd42;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:346:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2a' generates 6 bits.
+                                                                                                : ... note: In instance 'simple_test'
+  346 |             data = 6'd42;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:382:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2b' generates 6 bits.
+                                                                                                : ... note: In instance 'simple_test'
+  382 |             data = 6'd43;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:400:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2c' generates 6 bits.
+                                                                                                : ... note: In instance 'simple_test'
+  400 |             data = 6'd44;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:454:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2d' generates 6 bits.
+                                                                                                : ... note: In instance 'simple_test'
+  454 |             data = 6'd45;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:472:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2e' generates 6 bits.
+                                                                                                : ... note: In instance 'simple_test'
+  472 |             data = 6'd46;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:490:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2f' generates 6 bits.
+                                                                                                : ... note: In instance 'simple_test'
+  490 |             data = 6'd47;
+      |                  ^
+%Warning-LATCH: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:822:1: Latch inferred for signal 'simple_test.a.run_put_to_fifo.TMP_1' (not all control paths of combinational always assign a value)
+                                                                                         : ... Suggest use of always_latch for intentional latches
+  822 | always_comb 
+      | ^~~~~~~~~~~
+                ... For warning description see https://verilator.org/warn/LATCH?v=5.045
+                ... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.
+%Warning-LATCH: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:822:1: Latch inferred for signal 'simple_test.a.run_put_to_fifo.TMP_0' (not all control paths of combinational always assign a value)
+                                                                                         : ... Suggest use of always_latch for intentional latches
+  822 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:891:1: Latch inferred for signal 'simple_test.a.methProc.TMP_4' (not all control paths of combinational always assign a value)
+                                                                                         : ... Suggest use of always_latch for intentional latches
+  891 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:891:1: Latch inferred for signal 'simple_test.a.methProc.TMP_3' (not all control paths of combinational always assign a value)
+                                                                                         : ... Suggest use of always_latch for intentional latches
+  891 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:891:1: Latch inferred for signal 'simple_test.a.methProc.data' (not all control paths of combinational always assign a value)
+                                                                                         : ... Suggest use of always_latch for intentional latches
+  891 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/sct_fifo/sv_out/sct_target_fifo.sv:891:1: Latch inferred for signal 'simple_test.a.methProc.TMP_6' (not all control paths of combinational always assign a value)
+                                                                                         : ... Suggest use of always_latch for intentional latches
+  891 | always_comb 
+      | ^~~~~~~~~~~
+%Error: Exiting due to 19 warning(s)
+
+================================================================================
+File: sct_initiator/sv_out/sct_initiator_thread.sv
+================================================================================
+Status: WARNINGS (7 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_initiator/sv_out/sct_initiator_thread.sv:207:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2a' generates 6 bits.
+                                                                                                          : ... note: In instance 'simple_test'
+  207 |             data = 6'd42;
+      |                  ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_initiator/sv_out/sct_initiator_thread.sv:243:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2b' generates 6 bits.
+                                                                                                          : ... note: In instance 'simple_test'
+  243 |             data = 6'd43;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_initiator/sv_out/sct_initiator_thread.sv:261:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2c' generates 6 bits.
+                                                                                                          : ... note: In instance 'simple_test'
+  261 |             data = 6'd44;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_initiator/sv_out/sct_initiator_thread.sv:315:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2d' generates 6 bits.
+                                                                                                          : ... note: In instance 'simple_test'
+  315 |             data = 6'd45;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_initiator/sv_out/sct_initiator_thread.sv:333:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2e' generates 6 bits.
+                                                                                                          : ... note: In instance 'simple_test'
+  333 |             data = 6'd46;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_initiator/sv_out/sct_initiator_thread.sv:351:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2f' generates 6 bits.
+                                                                                                          : ... note: In instance 'simple_test'
+  351 |             data = 6'd47;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_initiator/sv_out/sct_initiator_thread.sv:369:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h30' generates 6 bits.
+                                                                                                          : ... note: In instance 'simple_test'
+  369 |             data = 6'd48;
+      |                  ^
+%Error: Exiting due to 7 warning(s)
+
+================================================================================
+File: sct_signal/sv_out/sct_in_out_ports.sv
+================================================================================
+Status: WARNINGS (9 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_signal/sv_out/sct_in_out_ports.sv:59:35: Operator NEQ expects 3 bits on the RHS, but RHS's CONST '1'h0' generates 1 bits.
+                                                                                                  : ... note: In instance 'simple_test'
+   59 |     notEmpty = fifo_element_num_d != 1'd0;
+      |                                   ^~
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_signal/sv_out/sct_in_out_ports.sv:104:45: Operator EQ expects 4 bits on the LHS, but LHS's VARREF 'fifo_pop_indx' generates 2 bits.
+                                                                                                   : ... note: In instance 'simple_test'
+  104 |         fifo_pop_indx_next = (fifo_pop_indx == 4'(3'd4 - 1'd1)) ? 1'd0 : fifo_pop_indx + 1'd1;
+      |                                             ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_signal/sv_out/sct_in_out_ports.sv:104:65: Operator COND expects 2 bits on the Conditional True, but Conditional True's CONST '1'h0' generates 1 bits.
+                                                                                                   : ... note: In instance 'simple_test'
+  104 |         fifo_pop_indx_next = (fifo_pop_indx == 4'(3'd4 - 1'd1)) ? 1'd0 : fifo_pop_indx + 1'd1;
+      |                                                                 ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_signal/sv_out/sct_in_out_ports.sv:109:47: Operator EQ expects 4 bits on the LHS, but LHS's VARREF 'fifo_push_indx' generates 2 bits.
+                                                                                                   : ... note: In instance 'simple_test'
+  109 |         fifo_push_indx_next = (fifo_push_indx == 4'(3'd4 - 1'd1)) ? 1'd0 : fifo_push_indx + 1'd1;
+      |                                               ^~
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_signal/sv_out/sct_in_out_ports.sv:109:67: Operator COND expects 2 bits on the Conditional True, but Conditional True's CONST '1'h0' generates 1 bits.
+                                                                                                   : ... note: In instance 'simple_test'
+  109 |         fifo_push_indx_next = (fifo_push_indx == 4'(3'd4 - 1'd1)) ? 1'd0 : fifo_push_indx + 1'd1;
+      |                                                                   ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_signal/sv_out/sct_in_out_ports.sv:159:22: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next' generates 32 bits.
+                                                                                                  : ... note: In instance 'simple_test'
+  159 |             run_next = i_next;
+      |                      ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.045
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_signal/sv_out/sct_in_out_ports.sv:160:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next' generates 32 bits.
+                                                                                                  : ... note: In instance 'simple_test'
+  160 |             data = i_next;
+      |                  ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_signal/sv_out/sct_in_out_ports.sv:179:26: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next' generates 32 bits.
+                                                                                                  : ... note: In instance 'simple_test'
+  179 |                 run_next = i_next;
+      |                          ^
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_signal/sv_out/sct_in_out_ports.sv:180:22: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next' generates 32 bits.
+                                                                                                  : ... note: In instance 'simple_test'
+  180 |                 data = i_next;
+      |                      ^
+%Error: Exiting due to 9 warning(s)
+
+================================================================================
+File: sct_signal/sv_out/sct_signal.sv
+================================================================================
+Status: WARNINGS (3 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_signal/sv_out/sct_signal.sv:635:16: Operator COND expects 16 bits on the Conditional False, but Conditional False's CONST '1'h0' generates 1 bits.
+                                                                                             : ... note: In instance 'simple_test.a'
+  635 |     c = b_enbl ? b + 1'd1 : 1'd0;
+      |                ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_signal/sv_out/sct_signal.sv:198:23: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next' generates 32 bits.
+                                                                                            : ... note: In instance 'simple_test'
+  198 |             data_next = i_next;
+      |                       ^
+                     ... For warning description see https://verilator.org/warn/WIDTHTRUNC?v=5.045
+                     ... Use "/* verilator lint_off WIDTHTRUNC */" and lint_on around source to disable this message.
+%Warning-WIDTHTRUNC: example_tests/build_all_examples/sct_signal/sv_out/sct_signal.sv:235:27: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's VARREF 'i_next' generates 32 bits.
+                                                                                            : ... note: In instance 'simple_test'
+  235 |                 data_next = i_next;
+      |                           ^
+%Error: Exiting due to 3 warning(s)
+
+================================================================================
+File: sct_target/sv_out/sct_target_method.sv
+================================================================================
+Status: WARNINGS (17 warning(s))
+
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:249:23: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2a' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  249 |             in_s_next = 6'd42;
+      |                       ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.045
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:250:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2a' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  250 |             data = 6'd42;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:268:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2a' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  268 |             data = 6'd42;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:304:23: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2b' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  304 |             in_s_next = 6'd43;
+      |                       ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:305:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2b' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  305 |             data = 6'd43;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:323:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2b' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  323 |             data = 6'd43;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:341:23: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2c' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  341 |             in_s_next = 6'd44;
+      |                       ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:342:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2c' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  342 |             data = 6'd44;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:360:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2c' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  360 |             data = 6'd44;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:414:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2d' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  414 |             data = 6'd45;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:432:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2e' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  432 |             data = 6'd46;
+      |                  ^
+%Warning-WIDTHEXPAND: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:450:18: Operator ASSIGN expects 16 bits on the Assign RHS, but Assign RHS's CONST '6'h2f' generates 6 bits.
+                                                                                                    : ... note: In instance 'simple_test'
+  450 |             data = 6'd47;
+      |                  ^
+%Warning-LATCH: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:787:1: Latch inferred for signal 'simple_test.a.methProc.A' (not all control paths of combinational always assign a value)
+                                                                                             : ... Suggest use of always_latch for intentional latches
+  787 | always_comb 
+      | ^~~~~~~~~~~
+                ... For warning description see https://verilator.org/warn/LATCH?v=5.045
+                ... Use "/* verilator lint_off LATCH */" and lint_on around source to disable this message.
+%Warning-LATCH: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:787:1: Latch inferred for signal 'simple_test.a.methProc.TMP_2' (not all control paths of combinational always assign a value)
+                                                                                             : ... Suggest use of always_latch for intentional latches
+  787 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:787:1: Latch inferred for signal 'simple_test.a.methProc.TMP_3' (not all control paths of combinational always assign a value)
+                                                                                             : ... Suggest use of always_latch for intentional latches
+  787 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:787:1: Latch inferred for signal 'simple_test.a.methProc.TMP_5' (not all control paths of combinational always assign a value)
+                                                                                             : ... Suggest use of always_latch for intentional latches
+  787 | always_comb 
+      | ^~~~~~~~~~~
+%Warning-LATCH: example_tests/build_all_examples/sct_target/sv_out/sct_target_method.sv:787:1: Latch inferred for signal 'simple_test.out_s' (not all control paths of combinational always assign a value)
+                                                                                             : ... Suggest use of always_latch for intentional latches
+  787 | always_comb 
+      | ^~~~~~~~~~~
+%Error: Exiting due to 17 warning(s)
+

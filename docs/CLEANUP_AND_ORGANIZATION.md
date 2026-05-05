@@ -102,8 +102,8 @@ systemc-compiler-demo/
 ├── example_tests/                           # Generated (gitignored)
 │   └── build_all_examples/                  # Latest build
 │       ├── */sv_out/*.sv                    # Generated Verilog
-│       ├── */sv_out/*.lint.log              # Individual lint logs
-│       └── verilator_lint_report.txt        # Consolidated report
+│       └── */sv_out/*.lint.log              # Individual lint logs
+├── verilator_lint_report.txt                # Consolidated lint report
 ├── icsc_install/                            # Installation (gitignored)
 ├── install.sh                               # Installation script
 ├── make_examples.sh                         # Build + lint examples

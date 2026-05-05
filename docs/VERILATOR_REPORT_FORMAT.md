@@ -6,7 +6,7 @@ The consolidated Verilator lint report now has an **intelligent structure** that
 
 ## Report Structure
 
-The report (`example_tests/build_all_examples/verilator_lint_report.txt`) has three main sections:
+The report (`verilator_lint_report.txt` in the project root) has three main sections:
 
 ### 1. **Header**
 ```
@@ -142,7 +142,7 @@ For ICSC-generated code with known-safe warnings, add to the `.sv` file:
 ### How It Works
 
 1. **During lint phase**: Each file's lint log saved separately
-2. **After all files linted**: 
+2. **After all files linted**:
    - Extract all `%Warning-TYPE` lines from all `.lint.log` files
    - Count occurrences of each type
    - Group files by warning type
@@ -183,7 +183,7 @@ WIDTHEXPAND
 
 The improved report format provides:
 - ✅ **Quick insights** - See patterns at a glance
-- ✅ **Easy navigation** - Find specific warning types fast  
+- ✅ **Easy navigation** - Find specific warning types fast
 - ✅ **Context** - Examples show what each warning means
 - ✅ **Completeness** - Full details still available per file
 

@@ -111,8 +111,8 @@ else
     LINT_WARNINGS=0
     LINT_ERRORS=0
 
-    # Create consolidated lint report (summary will be added later)
-    LINT_REPORT="$BUILD_DIR/verilator_lint_report.txt"
+    # Create consolidated lint report in project root (summary will be added later)
+    LINT_REPORT="verilator_lint_report.txt"
     DETAILED_REPORT="${LINT_REPORT}.detailed"
 
     echo "================================================================================" > "$LINT_REPORT"
