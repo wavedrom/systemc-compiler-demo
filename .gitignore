@@ -1,0 +1,5 @@
+systemc-compiler/
+icsc_install/
+example_tests/
+*.log
+setenv.sh
